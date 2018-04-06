@@ -1,0 +1,59 @@
+<h1>hi</h1>
+<br>
+
+<%= render :partial => "form" %>
+
+<% if false %>
+<ul>
+  <% @photos.each do |photo|%>
+    <li>
+      <%= photo.title %>
+      <%= link_to "show", photo_path(photo)%>
+      <%= link_to 'Show', photo_path(photo) %>
+      <%= link_to "edit", edit_photo_path(photo) %>
+      <%= link_to 'delete', photo_path(photo) ,method: :delete , data: {confirm:'r u sure?'}%>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'new', new_photo_path %>
+
+<% end %>
+
+
+
+<% #=================================================== %>
+
+<% if false %> 
+  <% if @photo.errors.present? %>
+    <ul>
+      <% @photo.errors.each do |error, message| %>
+        <li> <%= "#{error.capitalize}  #{message}" %></li>
+        <% #=================================================== %>
+        <% if false %> 
+          <li> <%=  "#{message}" %></li>
+        <% end %>  
+        <% #=================================================== %>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% #=================================================== %>
+
+  <%= form_for @photo, :url => photos_path do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :date, "Date" %>
+    <%= f.text_field :date %>
+
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description %>
+
+    <%= f.label :file_location, "File Location" %>
+    <%= f.text_field :file_location %>
+
+    <%= f.submit "Create" %>
+  <% end %>
+<% end %>
+
+
